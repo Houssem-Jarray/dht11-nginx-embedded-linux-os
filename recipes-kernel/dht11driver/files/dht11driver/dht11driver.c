@@ -1,3 +1,7 @@
+/*
+* dht11.c - a DHT11 kernel device driver
+*/
+
 #include <linux/module.h>
 #include <linux/fs.h>
 #include <linux/cdev.h>
@@ -129,7 +133,7 @@ static struct file_operations fops = {
     .read = dht11_read_file,
 };
 
-static int __init dht11_init(void)
+static int __init dht11_custom_init(void)
 {
     int ret;
 
@@ -180,7 +184,7 @@ static int __init dht11_init(void)
     return 0;
 }
 
-static void __exit dht11_exit(void)
+static void __exit dht11_custom_exit(void)
 {
     device_destroy(dht11_class, dev_num);
     class_destroy(dht11_class);
@@ -191,8 +195,8 @@ static void __exit dht11_exit(void)
     pr_info("DHT11: Module unloaded.\n");
 }
 
-module_init(dht11_init);
-module_exit(dht11_exit);
+module_init(dht11_custom_init);
+module_exit(dht11_custom_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Your Name");

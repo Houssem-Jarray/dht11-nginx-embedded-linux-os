@@ -1,0 +1,1 @@
+obj-m := dht11driver.o
