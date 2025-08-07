@@ -2,12 +2,12 @@
 /plugin/;
 
 / {
-    compatible = "brcm,bcm2711";
-
+    compatible = "brcm,bcm2711"; // Pour Raspberry Pi 4
+    
     fragment@0 {
-        target = <&gpio>;
+        target-path = "/";
         __overlay__ {
-            dht11: dht11@0 {
+            dht11_sensor: dht11@0 {
                 compatible = "myvendor,dht11";
                 gpios = <&gpio 4 0>;
                 status = "okay";

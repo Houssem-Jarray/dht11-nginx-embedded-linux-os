@@ -17,3 +17,4 @@ do_install() {
 }
 
 SYSTEMD_SERVICE:${PN} = "wifi-connect.service"
+SYSTEMD_AUTO_ENABLE = "enable"
