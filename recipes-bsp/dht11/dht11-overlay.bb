@@ -11,8 +11,7 @@ DTB_NAME = "dht11.dtbo"
 
 do_compile() {
     echo "Compiling DHT11 overlay..."
-    
-    # Use dtc to compile the device tree overlay
+
     dtc -@ -I dts -O dtb \
         -i ${STAGING_KERNEL_DIR}/include \
         -i ${S} \
@@ -21,16 +20,15 @@ do_compile() {
 }
 
 do_install() {
-    install -d ${D}/boot/overlays/
-    install -m 0644 ${S}/${DTB_NAME} ${D}/boot/overlays/
+    install -d ${D}${nonarch_base_libdir}/firmware/overlays
+    install -m 0644 ${S}/${DTB_NAME} ${D}${nonarch_base_libdir}/firmware/overlays/
 }
 
 do_deploy() {
-    install -d ${DEPLOYDIR}
-    install -m 0644 ${S}/${DTB_NAME} ${DEPLOYDIR}/
+    install -d ${DEPLOYDIR}/overlays
+    install -m 0644 ${S}/${DTB_NAME} ${DEPLOYDIR}/overlays/
 }
 
-# Use the correct variable name for newer Yocto versions
-FILES:${PN} = "/boot/overlays/${DTB_NAME}"
+FILES:${PN} = "${nonarch_base_libdir}/firmware/overlays/${DTB_NAME}"
 
 COMPATIBLE_MACHINE = "raspberrypi4-64"

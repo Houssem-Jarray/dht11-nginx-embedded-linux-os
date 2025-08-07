@@ -1,0 +1,1 @@
+IMAGE_BOOT_FILES:append = " overlays/dht11.dtbo"

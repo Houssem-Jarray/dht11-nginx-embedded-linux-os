@@ -1,0 +1,11 @@
+[Unit]
+Description=Connect to Wi-Fi on boot
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/connect.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

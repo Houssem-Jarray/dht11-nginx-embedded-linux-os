@@ -30,7 +30,7 @@ int main()
         }
 
         buffer[len] = '\0';
-        printf("%s\n", buffer);
+        printf("%s", buffer);
         close(fd);
         sleep(2); // wait before next read
     }

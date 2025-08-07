@@ -2,13 +2,13 @@
 /plugin/;
 
 / {
-    compatible = "brcm,bcm2835";
+    compatible = "brcm,bcm2711";
 
     fragment@0 {
-        target-path = "/";
+        target = <&gpio>;
         __overlay__ {
             dht11: dht11@0 {
-                compatible = "dht11";
+                compatible = "myvendor,dht11";
                 gpios = <&gpio 4 0>;
                 status = "okay";
             };
